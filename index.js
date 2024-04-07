@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 app.post("/api", async (req, res) => {
   try {
     const { name, email, phoneNumber, message } = req.body;
-console.log(name,email,phoneNumber,message);
+
     // Assuming EmailSender returns a promise
     await EmailSender({ name, email, phoneNumber, message });
 

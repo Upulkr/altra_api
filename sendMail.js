@@ -16,7 +16,7 @@ const Email = (options) => {
       console.error(err);
       return;
     }
-    console.log("Email sent:", info);
+   
   });
 };
 
