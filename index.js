@@ -23,7 +23,7 @@ app.post("/api", async (req, res) => {
     // Assuming EmailSender returns a promise
     await EmailSender({name,email,phoneNumber,message });
 
-    res.json({ msg: `Your message sent successfully. ${name}` });
+    res.json({ msg: `Your message sent successfully.` });
   } catch (error) {
     console.error(error);
     res.status(500).json({ msg: "Internal Server Error ❌" });
