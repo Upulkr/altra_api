@@ -2,7 +2,7 @@ import nodemailer from "nodemailer";
 
 const Email = (options) => {
   let transpoter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
+    host: "smtp-relay.brevo.com",
     port: 465,
     secure: true,
     auth: {
@@ -21,11 +21,11 @@ const Email = (options) => {
 };
 
 const EmailSender = ({ name, email, phoneNumber, message }) => {
-
+console.log(name, email, phoneNumber, message)
   const customerDetailsOptions = {
-    from: `Customer Request to Altra Scientific`,
+    from: `sales@altrascientific.com`,
     to: process.env.SEND_TO,
-    subject: "Message From a customer",
+    subject: "Request from Customer - Website",
     html: `
           <div style="width: 100%; background-color: #f3f9ff; padding: 5rem 0">
           <div style="max-width: 700px; background-color: white; margin: 0 auto">
@@ -35,22 +35,23 @@ const EmailSender = ({ name, email, phoneNumber, message }) => {
               From ${name}
               </p>
               <div style="font-size: .8rem; margin: 0 30px">
-                <p>name: <b>${name}</b></p>
-                <p>Email: <b>${email}</b></p>
-                <p>phoneNumber: <b>${phoneNumber}</b></p>
-                <p>Message: <i>${message}</i></p>
+                <p>Customer name: <b>${name}</b></p>
+                <p>Customer Email: <b>${email}</b></p>
+                <p>Customer phoneNumber: <b>${phoneNumber}</b></p>
+                <p>Customer Request: <i>${message}</i></p>
               </div>
             </div>
           </div>
         </div>
           `,
   };
-  const shaneTextileResponseOptions = {
-    from: `Altra Scientific`,
-    to: email,
-    subject: "Regarding your message to Altra Scientific",
-    html: `
+const shaneTextileResponseOptions = {
+  from: `sales@altrascientific.com`,
+  to: email,
+  subject: "Regarding your message to Altra Scientific",
+  html: `
       <div style=" padding: 15px; border-top: 4px solid #D97706; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            <img src="https://i.postimg.cc/52CWSMjC/header-Logo.png" alt="Customer Care" style="display: block; margin: 0 auto; max-width:300px; width: 200px; height: auto;">
             <p style="font-size: 18px; font-weight: bold; color: #1F2937;">
                 Hi ${name}, thank you for reaching out to Altra Scientific!
             </p>
@@ -59,7 +60,9 @@ const EmailSender = ({ name, email, phoneNumber, message }) => {
             </p>
         </div>
     `,
-  };
+};
+
+
 
   Email(customerDetailsOptions);
   Email(shaneTextileResponseOptions);
