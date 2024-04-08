@@ -18,12 +18,12 @@ app.use(express.urlencoded({ extended: true }));
 
 app.post("/api", async (req, res) => {
   try {
-    const { fullname, email, phoneNumber, message } = req.body;
+    const { name, email, phoneNumber, message } = req.body;
 
     // Assuming EmailSender returns a promise
-    await EmailSender({fullname,email,phoneNumber,message });
+    await EmailSender({name,email,phoneNumber,message });
 
-    res.json({ msg: `Your message sent successfully. ${fullname}` });
+    res.json({ msg: `Your message sent successfully. ${name}` });
   } catch (error) {
     console.error(error);
     res.status(500).json({ msg: "Internal Server Error ❌" });
