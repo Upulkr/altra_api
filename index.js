@@ -1,8 +1,7 @@
 import express, { urlencoded } from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import EmailSender from './sendMail.js';
-
+import EmailSender from "./sendMail.js";
 
 dotenv.config();
 const app = express();
@@ -19,12 +18,12 @@ app.use(express.urlencoded({ extended: true }));
 
 app.post("/api", async (req, res) => {
   try {
-    const { name, email, phoneNumber, message } = req.body;
+    const {fullName,email,phoneNumber,message } = req.body;
 
     // Assuming EmailSender returns a promise
-    await EmailSender({ name, email, phoneNumber, message });
+    await EmailSender({fullName,email,phoneNumber,message });
 
-    res.json({ msg: "Your message sent successfully." });
+    res.json({ msg: `Your message sent successfully. ${fullName}` });
   } catch (error) {
     console.error(error);
     res.status(500).json({ msg: "Internal Server Error ❌" });
