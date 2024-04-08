@@ -21,6 +21,7 @@ const Email = (options) => {
 };
 
 const EmailSender = ({ name, email, phoneNumber, message }) => {
+
   const customerDetailsOptions = {
     from: `Customer Request to Altra Scientific`,
     to: process.env.SEND_TO,
