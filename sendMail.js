@@ -14,16 +14,13 @@ const Email = (options) => {
   transpoter.sendMail(options, (err, info) => {
     if (err) {
       console.error(err);
-      
 
       return;
     }
-   
   });
 };
 
 const EmailSender = ({ name, email, phoneNumber, message }) => {
-console.log(name,email,phoneNumber,message)
   const customerDetailsOptions = {
     from: `sales@altrascientific.com`,
     to: process.env.SEND_TO,
@@ -47,11 +44,11 @@ console.log(name,email,phoneNumber,message)
         </div>
           `,
   };
-const shaneTextileResponseOptions = {
-  from: `sales@altrascientific.com`,
-  to: email,
-  subject: "Regarding your message to Altra Scientific",
-  html: `
+  const shaneTextileResponseOptions = {
+    from: `sales@altrascientific.com`,
+    to: email,
+    subject: "Regarding your message to Altra Scientific",
+    html: `
       <div style=" padding: 15px; border-top: 4px solid #D97706; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
             <img src="https://i.postimg.cc/52CWSMjC/header-Logo.png" alt="Customer Care" style="display: block; margin: 0 auto; max-width:300px; width: 200px; height: auto;">
             <p style="font-size: 18px; font-weight: bold; color: #1F2937;">
@@ -62,9 +59,7 @@ const shaneTextileResponseOptions = {
             </p>
         </div>
     `,
-};
-
-
+  };
 
   Email(customerDetailsOptions);
   Email(shaneTextileResponseOptions);
