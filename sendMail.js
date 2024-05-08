@@ -2,7 +2,7 @@ import nodemailer from "nodemailer";
 
 const Email = (options) => {
   let transpoter = nodemailer.createTransport({
-    host: "smtp-relay.brevo.com",
+    host: "smtp.gmail.com",
     port: 465,
     secure: true,
     auth: {
@@ -14,6 +14,8 @@ const Email = (options) => {
   transpoter.sendMail(options, (err, info) => {
     if (err) {
       console.error(err);
+      
+
       return;
     }
    
@@ -21,7 +23,7 @@ const Email = (options) => {
 };
 
 const EmailSender = ({ name, email, phoneNumber, message }) => {
-console.log(name, email, phoneNumber, message)
+console.log(name,email,phoneNumber,message)
   const customerDetailsOptions = {
     from: `sales@altrascientific.com`,
     to: process.env.SEND_TO,
