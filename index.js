@@ -7,7 +7,7 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3000;
 
 app.use(
   cors({
@@ -33,5 +33,5 @@ app.post("/api", async (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`server running${port}`);
+  console.log(`server running on port ${port}`);
 });
